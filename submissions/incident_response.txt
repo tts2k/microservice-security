@@ -1,0 +1,12 @@
+1. Incident commander name: Thai Son Tran
+2. Executive Summary of what happened:
+  Three malicious crypto-mining kubernetes pods was deployed to the cluster
+3. Summary of what was affected:
+  Attacker got control of our system and deployed three separate malicious pods. The malicious pods were using our resource for crypto-mining
+4. Summmry of the impact:
+  We have a vulnability in our system that allowed an attacker to have access to the ssytem and deploy these malicious pods. The overall performance of our system is also affected due to having three crypto-mining pods hogging our CPU cycles.
+5. Summary of the remediation steps:
+  Use kubectl to remove malicious pods. Inspect relevant grafana metrics to summarize the impact of the incident
+6. Summary of lessons learned:
+  - It's possible to use admissions controllers to allow only certain images to be imported and started within the pods
+  - It is also good to have alerts like Falco and Grafana in these sort of situations

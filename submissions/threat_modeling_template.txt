@@ -8,10 +8,15 @@ Given Docker's system components and the STRIDE framework, identify five potenti
 
 Kubernetes Threat Modeling
 Given Kubernetes' system components and the STRIDE framework, identify five potential threats that may arise.
-- Spoofing:
-- Tampering:
-- Repudiation:
-- Elevation of privilege:
+- Spoofing: Internet connection to control plane can be spoofed which allow unauthorized changes to it
+- Tampering: The kube-proxy component can be tampered and be ground to mess with network rules
+- Repudiation: Unauthorized changes can be made to both API server and kubelet
+- Information Disclosure: Sensitive information can be exposed through configuration if file access permission isn't properly set
+- Elevation of privilege: Privilege and be abused if the privileged flag is set in pod's security context
 
 Docker-bench Run Results and Analysis
 From the failed findings, select and document 3 findings from the Docker-bench results that you want to harden based on the 5 attack surface areas you identified in Step 1. At least 1 of the 3 hardened findings should be different from the ones mentioned in the exercise (i.e. 5.10, 5.14, and 5.22).
+Docker-bench out of the box:
+- 1.2.3 Ensure auditing is configured for the Docker daemon (Scored)
+- 2.1 Ensure network traffic is restricted between containers on default bridge (Scored) 
+- 3.17 Ensure that daemon.json file ownership is set to root:root (Scored)
